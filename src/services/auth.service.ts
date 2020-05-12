@@ -24,6 +24,16 @@ export class AuthService {
             });
     }
 
+    refreshToken(){
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/auth/refresh_token`,
+            {},
+            {
+                observe: 'response',
+                responseType:'text'
+            });
+    }
+
     //Metodo SuccessfulLogin => que va ocurrir cuando el logeo sea correcto
     successfulLogin(authorizationValue : string){
         let tok = authorizationValue.substring(7); // se va recortar el string a partir del setimo caracter
